@@ -63,8 +63,9 @@ def main():
         audio = video.audio
 
         ffmpeg.concat(
-            video.filter('subtitles', srt_path, fontsdir="/content/fonts", force_style="Alignment=10,OutlineColour=&H40000000,BorderStyle=3,FontName=Pusab,FontSize=12"), audio, v=1, a=1
+            video.filter('subtitles', srt_path, fontsdir="/content/fonts", force_style="Alignment=10,OutlineColour=&H000000,BorderStyle=3,FontName=Pusab,FontSize=12,BackColour=&H00000000,PrimaryColour=&H00FF0000"), audio, v=1, a=1
         ).output(out_path).run(quiet=True, overwrite_output=True)
+
 
         print(f"Saved subtitled video to {os.path.abspath(out_path)}.")
 
