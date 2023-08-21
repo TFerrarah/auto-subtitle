@@ -42,16 +42,16 @@ def main():
     # Dictionary with colors
 
     colours = {
-        'white' = '&HFFFFFF',
-        'red' = '&H1F20FF',
-        'blue' = '&HFF8F8B',
-        'azure' = '&HFCFF8B',
-        'purple' = '&HFF7FCE',
-        'yellow' = '&H00F6FF',
-        'green' = '&H25FF27',
-        'gold' = '&H00BAFF',
-        'deepred' = '&H0000E4',
-        'lime' = '&H69FF6A',
+        'white' : '&HFFFFFF',
+        'red' : '&H1F20FF',
+        'blue' : '&HFF8F8B',
+        'azure' : '&HFCFF8B',
+        'purple' : '&HFF7FCE',
+        'yellow' : '&H00F6FF',
+        'green' : '&H25FF27',
+        'gold' : '&H00BAFF',
+        'deepred' : '&H0000E4',
+        'lime' : '&H69FF6A',
     }
     
     os.makedirs(output_dir, exist_ok=True)
