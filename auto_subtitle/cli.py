@@ -22,6 +22,9 @@ def main():
                         help="only generate the .srt file and not create overlayed video")
     parser.add_argument("--verbose", type=str2bool, default=False,
                         help="whether to print out the progress and debug messages")
+    
+    parser.add_argument("--color", type=str, default='white',
+                        help="change subtitle color")
 
     parser.add_argument("--task", type=str, default="transcribe", choices=[
                         "transcribe", "translate"], help="whether to perform X->X speech recognition ('transcribe') or X->English translation ('translate')")
@@ -34,6 +37,22 @@ def main():
     output_srt: bool = args.pop("output_srt")
     srt_only: bool = args.pop("srt_only")
     language: str = args.pop("language")
+    chosen_color: str = args.pop("color")
+
+    # Dictionary with colors
+
+    colours = {
+        'white' = '&HFFFFFF',
+        'red' = '&H1F20FF',
+        'blue' = '&HFF8F8B',
+        'azure' = '&HFCFF8B',
+        'purple' = '&HFF7FCE',
+        'yellow' = '&H00F6FF',
+        'green' = '&H25FF27',
+        'gold' = '&H00BAFF',
+        'deepred' = '&H0000E4',
+        'lime' = '&H69FF6A',
+    }
     
     os.makedirs(output_dir, exist_ok=True)
 
@@ -63,7 +82,7 @@ def main():
         audio = video.audio
 
         ffmpeg.concat(
-            video.filter('subtitles', srt_path, fontsdir="/content/fonts", force_style="FontName=Pusab,FontSize=12,PrimaryColour=&H0000FFFF,OutlineColour=&H00000000,BackColour=&H00000000, BorderStyle=1,Outline=3,Shadow=0,Alignment=10"), audio, v=1, a=1
+            video.filter('subtitles', srt_path, fontsdir="/content/fonts", force_style="FontName=Pusab,FontSize=12,PrimaryColour="+colours[chosen_color]+",OutlineColour=&H00000000,BackColour=&H00000000, BorderStyle=1,Outline=3,Shadow=0,Alignment=10"), audio, v=1, a=1
         ).output(out_path, preset="fast", crf="23").run(quiet=False, overwrite_output=True)
 
 
