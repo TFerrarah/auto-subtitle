@@ -63,7 +63,7 @@ def main():
         audio = video.audio
 
         ffmpeg.concat(
-            video.filter('subtitles', srt_path, fontsdir="/content/fonts", hwupload_cuda, force_style="FontName=Pusab,FontSize=12,PrimaryColour=&H0000FFFF,OutlineColour=&H00000000,BackColour=&H00000000, BorderStyle=1,Outline=3,Shadow=0,Alignment=10"), audio, v=1, a=1
+            video.filter('subtitles', srt_path, fontsdir="/content/fonts", force_style="FontName=Pusab,FontSize=12,PrimaryColour=&H0000FFFF,OutlineColour=&H00000000,BackColour=&H00000000, BorderStyle=1,Outline=3,Shadow=0,Alignment=10"), audio, v=1, a=1
         ).output(out_path, hwaccel="cuvid").run(quiet=False, overwrite_output=True)
 
 
